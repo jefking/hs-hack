@@ -1,5 +1,6 @@
 # Tools
 - Git
+- Docker
 - [Azure](https://portal.azure.com)
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [AZCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux)
@@ -47,10 +48,11 @@ az group deployment create --name process --resource-group hs-hack --template-fi
 
 ### Upload
 How do we upload to Azure?
+- [Docker](https://hub.docker.com/r/hawaku/azcopy/)
 
 ### Deploy Container to Process Files
 ``
-az group deployment create --name process --resource-group hs-hack --template-file 2.deploy.json --parameters customerName=contoso
+az group deployment create --name process --resource-group hs-hack --template-file 2.deploy.json --parameters 2.parameters.json
 ``
 
 ### Delete all cloud resources ($0)

@@ -3,71 +3,92 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "customerName": {
-          "type": "string",
-          "defaultValue": "unknown",
-          "metadata": {
-            "description": "Name of customer, resources will be based on this; use alpha-numeric"
-          }
+            "type": "string",
+            "defaultValue": "unknown",
+            "metadata": {
+                "description": "Name of customer, resources will be based on this; use alpha-numeric"
+            }
         },
-      "image": {
-        "type": "string",
-        "metadata": {
-          "description": "Container image to deploy. Should be of the form accountName/imagename[:tag] for images stored in Docker Hub or a fully qualified URI for a private registry like the Azure Container Registry."
+        "storageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage Account Name, for File Share"
+            }
         },
-        "defaultValue": "centos:latest"
-      }
+        "storageAccountKey": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Storage Account Key, for File Share"
+            }
+        },
+        "image": {
+            "type": "string",
+            "metadata": {
+                "description": "Container image to deploy. Should be of the form accountName/imagename[:tag] for images stored in Docker Hub or a fully qualified URI for a private registry like the Azure Container Registry."
+            }
+        }
     },
     "variables": {
         "location": "[resourceGroup().location]",
-        "fileShareName" : "[parameters('customerName')]",
+        "fileShareName": "[parameters('customerName')]",
         "cpuCores": "1.0",
         "memoryInGb": "1.5",
         "containerGroupName": "[concat('aci-', parameters('customerName'))]",
         "containerName": "[concat('process-', parameters('customerName'))]",
-        "volumename":"[parameters('customerName')]"
+        "volumename": "[parameters('customerName')]"
     },
     "resources": [
-      {
-        "name": "[variables('containerGroupName')]",
-        "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2017-10-01-preview",
-        "location": "[variables('location')]",
-        "properties": {
-          "containers": [
-            {
-              "name": "[variables('containerName')]",
-              "properties": {
-                "command": [
-                  "bin/bash",
-                  "-c",
-                  "while sleep 5; do cat /mnt/input/access.log; done"
+        {
+            "name": "[variables('containerGroupName')]",
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2017-10-01-preview",
+            "location": "[variables('location')]",
+            "properties": {
+                "containers": [
+                    {
+                        "name": "[variables('containerName')]",
+                        "properties": {
+                            "command": [
+                                "bin/bash",
+                                "-c",
+                                "while sleep 5; do cat /mnt/input/access.log; done"
+                            ],
+                            "image": "[parameters('image')]",
+                            "resources": {
+                                "requests": {
+                                    "cpu": "[variables('cpuCores')]",
+                                    "memoryInGb": "[variables('memoryInGb')]"
+                                }
+                            },
+                            "volumeMounts": [
+                                {
+                                    "name": "[variables('volumename')]",
+                                    "mountPath": "/mnt/input",
+                                    "readOnly": true
+                                }
+                            ]
+                        }
+                    }
                 ],
-                "image": "[parameters('image')]",
-                "resources": {
-                  "requests": {
-                    "cpu": "[variables('cpuCores')]",
-                    "memoryInGb": "[variables('memoryInGb')]"
-                  }
-                },
-                "volumeMounts": [
-                  {
-                    "name": "[variables('volumename')]",
-                    "mountPath": "/mnt/input",
-                    "readOnly": true
-                  }
+                "osType": "Linux",
+                "restartPolicy": "OnFailure",
+                "volumes": [
+                    {
+                        "name": "[variables('volumename')]",
+                        "azureFile": {
+                            "shareName": "[parameters('customerName')]",
+                            "storageAccountName": "[parameters('storageAccountName')]",
+                            "storageAccountKey": "[parameters('storageAccountKey')]"
+                        }
+                    }
                 ]
-              }
-            }
-          ],
-          "osType": "Linux",
-          "restartPolicy": "OnFailure",
-          "volumes": [
-            {
-              "name": "[variables('volumename')]",
-              "emptyDir": {}
-            }
-          ]
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
+                "[parameters('customerName')]",
+                "[parameters('storageAccountName')]",
+                "[parameters('storageAccountKey')]"
+            ]
         }
-      }
     ]
-  }
+}
