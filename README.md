@@ -31,12 +31,15 @@ Delete all resources (manually?)
 
 ## Commands
 ### Deploy
+Create Resource Group
 ``
 az group create -g hs-hack --location "West US 2"
 ``
+Create File Share
 ``
 az group deployment create --name process --resource-group hs-hack --template-file 1.deploy.json --parameters customerName=contoso
 ``
+Deploy Container to Process Files
 ``
 az group deployment create --name process --resource-group hs-hack --template-file 2.deploy.json --parameters customerName=contoso
 ``

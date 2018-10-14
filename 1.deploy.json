@@ -19,7 +19,7 @@
         "cpuCores": "1.0",
         "memoryInGb": "1.5",
         "containerGroupName": "[concat('aci-', parameters('customerName'))]",
-        "containerName": "createshare"
+        "containerName": "[concat('create-share-', parameters('customerName'))]"
     },
     "resources": [
         {
