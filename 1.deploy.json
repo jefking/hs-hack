@@ -18,7 +18,7 @@
         "image": "microsoft/azure-cli",
         "cpuCores": "1.0",
         "memoryInGb": "1.5",
-        "containerGroupName": "createshare-containerinstance",
+        "containerGroupName": "[concat('aci-', parameters('customerName'))]",
         "containerName": "createshare"
     },
     "resources": [

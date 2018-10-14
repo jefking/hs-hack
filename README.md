@@ -35,6 +35,9 @@ Delete all resources (manually?)
 az group create -g hs-hack --location "West US 2"
 ``
 ``
-az group deployment create --name process --resource-group hs-hack --template-file deploy.json --parameters customerName=contoso
+az group deployment create --name process --resource-group hs-hack --template-file 1.deploy.json --parameters customerName=contoso
+``
+``
+az group deployment create --name process --resource-group hs-hack --template-file 2.deploy.json --parameters customerName=contoso
 ``
 ### Upload

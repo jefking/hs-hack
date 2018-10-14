@@ -9,12 +9,6 @@
             "description": "Name of customer, resources will be based on this; use alpha-numeric"
           }
         },
-      "volumename": {
-        "type": "string",
-        "metadata": {
-          "description": "Name for the emptyDir volume"
-        }
-      },
       "image": {
         "type": "string",
         "metadata": {
@@ -30,17 +24,18 @@
         "memoryInGb": "1.5",
         "containerGroupName": "[concat('aci-', parameters('customerName'))]",
         "containerName": "[concat('aci-', parameters('customerName'))]",
+        "volumename":"[parameters('customerName')]"
     },
     "resources": [
       {
-        "name": "[parameters('containergroupname')]",
+        "name": "[variables('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
         "apiVersion": "2017-10-01-preview",
-        "location": "[parameters('location')]",
+        "location": "[variables('location')]",
         "properties": {
           "containers": [
             {
-              "name": "[parameters('containername2')]",
+              "name": "[variables('containerName')]",
               "properties": {
                 "command": [
                   "bin/bash",
@@ -50,13 +45,13 @@
                 "image": "[parameters('image')]",
                 "resources": {
                   "requests": {
-                    "cpu": "[parameters('cpuCores')]",
-                    "memoryInGb": "[parameters('memoryInGb')]"
+                    "cpu": "[variables('cpuCores')]",
+                    "memoryInGb": "[variables('memoryInGb')]"
                   }
                 },
                 "volumeMounts": [
                   {
-                    "name": "[parameters('volumename')]",
+                    "name": "[variables('volumename')]",
                     "mountPath": "/mnt/input",
                     "readOnly": true
                   }
@@ -65,9 +60,10 @@
             }
           ],
           "osType": "Linux",
+          "restartPolicy": "OnFailure",
           "volumes": [
             {
-              "name": "[parameters('volumename')]",
+              "name": "[variables('volumename')]",
               "emptyDir": {}
             }
           ]
