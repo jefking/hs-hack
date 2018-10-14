@@ -44,7 +44,7 @@ az group create -g <resourceGroupName> --location "West US 2"
 az group deployment create --name setup --resource-group <resourceGroupName> --template-file 1.deploy.json --parameters customerName=<customerName>
 ``
 
-### 3. Upload
+### 3. Upload (untested)
 ``
 azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.blob.core.windows.net/<customerName> --dest-key <storageAccountKey>
 ``
@@ -54,7 +54,7 @@ azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.b
 az group deployment create --name process --resource-group <resourceGroupName> --template-file 2.deploy.json --parameters 2.parameters.json
 ``
 
-### 5. Download
+### 5. Download (untested)
 ``
 azcopy --source https://<storageAccountName>.blob.core.windows.net/<customerName> --destination /mnt/<customerName> \ --source-key <storageAccountKey>
 ``
