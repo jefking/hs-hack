@@ -8,8 +8,8 @@
 - [Storage Account](https://docs.microsoft.com/en-us/azure/storage/)
     - [File Share](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
 - [Container Instances](https://azure.microsoft.com/en-us/services/container-instances/)
-    - Create Share
-    - Process Imagery
+    - Creates Share (Azure CLI)
+    - Processes Files (Custom Image)
 
 # Algorithm
 - Create
