@@ -12,20 +12,20 @@
     - Processes Files (Custom Image)
 
 # Algorithm
-- Create
-    - Resource Group (command below)
-- Execute Deployment ([1.deploy.json](https://github.com/jefking/hs-hack/blob/master/1.deploy.json))
+- Initialize
+    - Resource Group (command)
+- Deployment (command [1.deploy.json](https://github.com/jefking/hs-hack/blob/master/1.deploy.json))
     - ARM Template
         - Creates Storage
         - Creates Azure Container Instance
-        - Container Creates File Share (in Storage)
-- Upload Files (manually, come up with script)
-- Execute Deployment ([2.deploy.json](https://github.com/jefking/hs-hack/blob/master/2.deploy.json))
+        - Container creates File Share
+- Upload Files (script)
+- Deployment (command [2.deploy.json](https://github.com/jefking/hs-hack/blob/master/2.deploy.json))
     - Deploy Custom Image to ACI
         - With Mapped File Share
-- Wait for Complete (manually)
-- Download Files (manually, script)
-- Delete all resources (command below)
+- Wait for processing to complete (manually)
+- Download Files (script)
+- Delete all resources (command)
 
 # Commands
 ## Specify
