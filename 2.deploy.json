@@ -51,7 +51,7 @@
                             "command": [
                                 "bin/bash",
                                 "-c",
-                                "while sleep 5; do ls /mnt/input; done"
+                                "while sleep 5; do cat /mnt/input/temp; done"
                             ],
                             "image": "[parameters('image')]",
                             "resources": {

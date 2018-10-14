@@ -41,21 +41,22 @@
 az group create -g hs-hack --location "West US 2"
 ``
 
-### Create File Share
+### Setup Environment (File Share)
 ``
-az group deployment create --name process --resource-group hs-hack --template-file 1.deploy.json --parameters customerName=contoso
+az group deployment create --name setup --resource-group hs-hack --template-file 1.deploy.json --parameters customerName=contoso
 ``
 
 ### Upload
 How do we upload to Azure?
 - [Docker](https://hub.docker.com/r/hawaku/azcopy/)
+    - Directory on computer to newly created Storage File Share
 
-### Deploy Container to Process Files
+### Process Files (Container)
 ``
 az group deployment create --name process --resource-group hs-hack --template-file 2.deploy.json --parameters 2.parameters.json
 ``
 
-### Delete all cloud resources ($0)
+### Delete Resources ($0)
 ``
 az group delete -n hs-hack
 ``
