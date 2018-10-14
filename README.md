@@ -38,12 +38,12 @@
 ## Deploy
 ### Create Resource Group
 ``
-az group create -g hs-hack --location "West US 2"
+az group create -g <resourceGroupName> --location "West US 2"
 ``
 
 ### Setup File Share
 ``
-az group deployment create --name setup --resource-group hs-hack --template-file 1.deploy.json --parameters customerName=contoso
+az group deployment create --name setup --resource-group <resourceGroupName> --template-file 1.deploy.json --parameters customerName=<customerName>
 ``
 
 ### Upload
@@ -53,7 +53,7 @@ azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.b
 
 ### Process Files (Container)
 ``
-az group deployment create --name process --resource-group hs-hack --template-file 2.deploy.json --parameters 2.parameters.json
+az group deployment create --name process --resource-group <resourceGroupName> --template-file 2.deploy.json --parameters 2.parameters.json
 ``
 
 ### Download
@@ -64,5 +64,5 @@ azcopy --source https://<storageAccountName>.blob.core.windows.net/<customerName
 
 ### Delete Resources ($0)
 ``
-az group delete -n hs-hack
+az group delete -n <resourceGroupName>
 ``
