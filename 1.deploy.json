@@ -1,0 +1,81 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "customerName": {
+        "type": "string",
+        "defaultValue": "unknown",
+        "metadata": {
+          "description": "Name of customer, resources will be based on this; use alpha-numeric"
+        }
+      }
+    },
+    "variables": {
+      "location": "[resourceGroup().location]",
+      "storageAccountName": "[concat(parameters('customerName'), uniquestring(resourceGroup().id))]",
+      "fileShareName" : "[parameters('customerName')]",
+      "storageAccountType": "Standard_LRS",
+      "image": "microsoft/azure-cli",
+      "cpuCores": "1.0",
+      "memoryInGb": "1.5",
+      "containerGroupName": "createshare-containerinstance",
+      "containerName": "createshare"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('storageAccountName')]",
+        "apiVersion": "2017-10-01",
+        "location": "[variables('location')]",
+        "sku": {
+          "name": "[variables('storageAccountType')]"
+        },
+        "kind": "Storage"
+      },
+      {
+        "name": "[variables('containerGroupName')]",
+        "type": "Microsoft.ContainerInstance/containerGroups",
+        "apiVersion": "2018-02-01-preview",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
+        ],
+        "properties": {
+          "containers": [
+            {
+              "name": "[variables('containerName')]",
+              "properties": {
+                "image": "[variables('image')]",
+                "command": [
+                  "az",
+                  "storage",
+                  "share",
+                  "create",
+                  "--name",
+                  "[variables('fileShareName')]"
+                ],
+                "environmentVariables": [
+                  {
+                    "name": "AZURE_STORAGE_KEY",
+                    "value": "[listKeys(variables('storageAccountName'),'2017-10-01').keys[0].value]"
+                  },
+                  {
+                    "name": "AZURE_STORAGE_ACCOUNT",
+                    "value": "[variables('storageAccountName')]"
+                  }
+                ],
+                "resources": {
+                  "requests": {
+                    "cpu": "[variables('cpuCores')]",
+                    "memoryInGb": "[variables('memoryInGb')]"
+                  }
+                }
+              }
+            }
+          ],
+          "restartPolicy": "OnFailure",
+          "osType": "Linux"
+        }
+      }
+    ]
+  }
