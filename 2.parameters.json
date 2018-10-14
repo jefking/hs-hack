@@ -6,10 +6,10 @@
             "value": "contoso"
         },
         "storageAccountName": {
-            "value": "contoso5cpnqeadll676"
+            "value": ""
         },
         "storageAccountKey": {
-            "value": "dh69n/AwemlfHTMpVgylrdfqeyUKw8K1k25FlT9w3AFGGUNJZcAV/JGgH0CU1oDA5bORqp4fFg95QXtDal+e8Q=="
+            "value": ""
         },
         "image":{
             "value": "centos:latest"

@@ -50,6 +50,8 @@ az group deployment create --name setup --resource-group hs-hack --template-file
 How do we upload to Azure?
 - [Docker](https://hub.docker.com/r/hawaku/azcopy/)
     - Directory on computer to newly created Storage File Share
+``
+``
 
 ### Process Files (Container)
 ``

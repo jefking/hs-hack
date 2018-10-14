@@ -50,8 +50,7 @@
                         "properties": {
                             "command": [
                                 "bin/bash",
-                                "-c",
-                                "while sleep 5; do cat /mnt/input/temp; done"
+                                "exit"
                             ],
                             "image": "[parameters('image')]",
                             "resources": {
