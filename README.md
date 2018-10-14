@@ -1,11 +1,10 @@
 # Tools
 - Git
 - Docker
-- [Azure](https://portal.azure.com)
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [AZCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux)
 
-# Azure Resources
+# [Azure](https://portal.azure.com)
 - [Storage Account](https://docs.microsoft.com/en-us/azure/storage/)
     - [File Share](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
 - [Container Instances](https://azure.microsoft.com/en-us/services/container-instances/)
