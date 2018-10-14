@@ -34,33 +34,32 @@
 - Container Image Name
 
 ## Deploy
-### Create Resource Group
+### 1. Create Resource Group
 ``
 az group create -g <resourceGroupName> --location "West US 2"
 ``
 
-### Setup File Share
+### 2. Setup File Share
 ``
 az group deployment create --name setup --resource-group <resourceGroupName> --template-file 1.deploy.json --parameters customerName=<customerName>
 ``
 
-### Upload
+### 3. Upload
 ``
 azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.blob.core.windows.net/<customerName> --dest-key <storageAccountKey>
 ``
 
-### Process Files (Container)
+### 4. Process Files (Container)
 ``
 az group deployment create --name process --resource-group <resourceGroupName> --template-file 2.deploy.json --parameters 2.parameters.json
 ``
 
-### Download
+### 5. Download
 ``
 azcopy --source https://<storageAccountName>.blob.core.windows.net/<customerName> --destination /mnt/<customerName> \ --source-key <storageAccountKey>
 ``
 
-
-### Delete Resources ($0)
+### 6. Delete Resources ($0)
 ``
 az group delete -n <resourceGroupName>
 ``
