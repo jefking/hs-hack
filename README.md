@@ -15,10 +15,9 @@
 - Initialize
     - Resource Group (command)
 - Deployment (command [1.deploy.json](https://github.com/jefking/hs-hack/blob/master/1.deploy.json))
-    - ARM Template
-        - Creates Storage
-        - Creates Azure Container Instance
-        - Container creates File Share
+    - Creates Storage
+    - Creates Azure Container Instance
+    - Container creates File Share
 - Upload Files (script)
 - Deployment (command [2.deploy.json](https://github.com/jefking/hs-hack/blob/master/2.deploy.json))
     - Deploy Custom Image to ACI
