@@ -29,7 +29,7 @@
 - Delete all resources (command below)
 
 # Commands
-## Needed
+## Specify
 - Resource Group Name (alpha-numeric)
 - Resource Group Location (West US 2)
 - Customer Name (alpha-numeric)
@@ -41,15 +41,12 @@
 az group create -g hs-hack --location "West US 2"
 ``
 
-### Setup Environment (File Share)
+### Setup File Share
 ``
 az group deployment create --name setup --resource-group hs-hack --template-file 1.deploy.json --parameters customerName=contoso
 ``
 
 ### Upload
-How do we upload to Azure?
-- [Docker](https://hub.docker.com/r/hawaku/azcopy/)
-    - Directory on computer to newly created Storage File Share
 ``
 azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.blob.core.windows.net/<customerName> --dest-key <storageAccountKey>
 ``
@@ -60,9 +57,6 @@ az group deployment create --name process --resource-group hs-hack --template-fi
 ``
 
 ### Download
-How do we download to Azure?
-- [Docker](https://hub.docker.com/r/hawaku/azcopy/)
-    - Directory on computer to newly created Storage File Share
 ``
 azcopy --source https://<storageAccountName>.blob.core.windows.net/<customerName> --destination /mnt/<customerName> \ --source-key <storageAccountKey>
 ``
