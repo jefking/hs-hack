@@ -13,19 +13,18 @@
 
 # Algorithm
 - Create
-    - Resource Group
+    - Resource Group (command below)
 - Execute Deployment ([1.deploy.json](https://github.com/jefking/hs-hack/blob/master/1.deploy.json))
     - ARM Template
         - Creates Storage
-        - Creates ACI instance
-        - Creates File Share (in Storage)
-- Upload Files (manually?)
+        - Creates Azure Container Instance
+        - Container Creates File Share (in Storage)
+- Upload Files (manually, come up with script)
 - Execute Deployment ([2.deploy.json](https://github.com/jefking/hs-hack/blob/master/2.deploy.json))
-    - Create ACI
-        - Custom Image
-        - Map Drive
+    - Deploy Custom Image to ACI
+        - With Mapped File Share
 - Wait for Complete (manually)
-- Download Files (manually)
+- Download Files (manually, script)
 - Delete all resources (command below)
 
 # Commands
