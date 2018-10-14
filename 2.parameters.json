@@ -11,7 +11,7 @@
         "storageAccountKey": {
             "value": ""
         },
-        "image":{
+        "image": {
             "value": "centos:latest"
         }
     }
