@@ -15,13 +15,13 @@ ACI
 ## Algo
 Create
 - Resource Group
-Execute Deployment
+Execute Deployment ([1.deploy.json](https://github.com/jefking/hs-hack/blob/master/1.deploy.json))
 - ARM Template
     - Creates Storage
     - Creates ACI instance
     - Creates File Share (in Storage)
 Upload Files (manually?)
-Execute Deployment
+Execute Deployment ([2.deploy.json](https://github.com/jefking/hs-hack/blob/master/2.deploy.json))
 - Create ACI
     - Custom Image
     - Map Drive
