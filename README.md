@@ -11,3 +11,13 @@ Storage Account
 - Drive
 LogicApp
 ACI
+
+## Commands
+### Deploy
+``
+az group create -g hs-job --location "West US 2"
+``
+``
+az group deployment create --name process --resource-group hs-job --template-file deploy.json
+``
+### Upload
