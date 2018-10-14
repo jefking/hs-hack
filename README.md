@@ -33,6 +33,7 @@ Delete all resources (manually?)
 - Resource Group Name (alpha-numeric)
 - Resource Group Location (West US 2)
 - Customer Name (alpha-numeric)
+- Container Image Name
 
 ## Deploy
 ### Create Resource Group
@@ -45,6 +46,9 @@ az group create -g hs-hack --location "West US 2"
 az group deployment create --name process --resource-group hs-hack --template-file 1.deploy.json --parameters customerName=contoso
 ``
 
+### Upload
+How do we upload to Azure?
+
 ### Deploy Container to Process Files
 ``
 az group deployment create --name process --resource-group hs-hack --template-file 2.deploy.json --parameters customerName=contoso
@@ -54,6 +58,3 @@ az group deployment create --name process --resource-group hs-hack --template-fi
 ``
 az group delete -n hs-hack
 ``
-
-### Upload
-How do we upload to Azure?
