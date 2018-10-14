@@ -59,6 +59,16 @@ azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.b
 az group deployment create --name process --resource-group hs-hack --template-file 2.deploy.json --parameters 2.parameters.json
 ``
 
+### Download
+How do we download to Azure?
+- [Docker](https://hub.docker.com/r/hawaku/azcopy/)
+    - Directory on computer to newly created Storage File Share
+``
+azcopy \
+    --source https://<storageAccountName>.blob.core.windows.net/<customerName> --destination /mnt/<customerName> \ --source-key <storageAccountKey>
+``
+
+
 ### Delete Resources ($0)
 ``
 az group delete -n hs-hack
