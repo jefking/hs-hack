@@ -50,7 +50,9 @@
                         "properties": {
                             "command": [
                                 "bin/bash",
-                                "exit"
+                                "shutdown",
+                                "now",
+                                "\"Killing Container\""
                             ],
                             "image": "[parameters('image')]",
                             "resources": {
