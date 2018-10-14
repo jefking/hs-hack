@@ -51,6 +51,7 @@ How do we upload to Azure?
 - [Docker](https://hub.docker.com/r/hawaku/azcopy/)
     - Directory on computer to newly created Storage File Share
 ``
+azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.blob.core.windows.net/<customerName> --dest-key <storageAccountKey>
 ``
 
 ### Process Files (Container)
