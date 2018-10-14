@@ -64,8 +64,7 @@ How do we download to Azure?
 - [Docker](https://hub.docker.com/r/hawaku/azcopy/)
     - Directory on computer to newly created Storage File Share
 ``
-azcopy \
-    --source https://<storageAccountName>.blob.core.windows.net/<customerName> --destination /mnt/<customerName> \ --source-key <storageAccountKey>
+azcopy --source https://<storageAccountName>.blob.core.windows.net/<customerName> --destination /mnt/<customerName> \ --source-key <storageAccountKey>
 ``
 
 
