@@ -5,11 +5,11 @@
 - [AZCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux)
 
 # Azure Resources
-Storage Account
-- File Share
-ACI
-- Create Share
-- Process Imagery
+- Storage Account
+    - File Share
+- Container Instances
+    - Create Share
+    - Process Imagery
 
 # Algorithm
 Create
