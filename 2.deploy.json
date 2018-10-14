@@ -51,7 +51,7 @@
                             "command": [
                                 "bin/bash",
                                 "-c",
-                                "while sleep 5; do cat /mnt/input/access.log; done"
+                                "while sleep 5; do ls /mnt/input; done"
                             ],
                             "image": "[parameters('image')]",
                             "resources": {
@@ -82,13 +82,7 @@
                         }
                     }
                 ]
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-                "[parameters('customerName')]",
-                "[parameters('storageAccountName')]",
-                "[parameters('storageAccountKey')]"
-            ]
+            }
         }
     ]
 }
