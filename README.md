@@ -14,12 +14,12 @@
 # Algorithm
 - Initialize
     - Resource Group (command)
-- Deployment (command [1.deploy.json](https://github.com/jefking/hs-hack/blob/master/1.deploy.json))
-    - Creates Storage
+- ARM Deployment (command [1.deploy.json](https://github.com/jefking/hs-hack/blob/master/1.deploy.json))
+    - Creates Storage Account
     - Creates Azure Container Instance
-    - Container creates File Share
+        - Container creates File Share
 - Upload Files (script)
-- Deployment (command [2.deploy.json](https://github.com/jefking/hs-hack/blob/master/2.deploy.json))
+- ARM Deployment (command [2.deploy.json](https://github.com/jefking/hs-hack/blob/master/2.deploy.json))
     - Deploy Custom Image to ACI
         - With Mapped File Share
 - Wait for processing to complete (manually)
