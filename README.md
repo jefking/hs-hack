@@ -5,9 +5,9 @@
 - [AZCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux)
 
 # Azure Resources
-- Storage Account
-    - File Share
-- Container Instances
+- [Storage Account](https://docs.microsoft.com/en-us/azure/storage/)
+    - [File Share](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction)
+- [Container Instances](https://azure.microsoft.com/en-us/services/container-instances/)
     - Create Share
     - Process Imagery
 
