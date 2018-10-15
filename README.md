@@ -65,9 +65,15 @@ az group delete -n <resourceGroupName>
 ``
 
 # V.Next
-1. Code changes
+1. Container Registry
+2. Code changes
 - Process terminates when done
 - Don't delete files
 - ini -> data store (later)
 - processing can be per file (later)
-2. Automation
+3. Template Changes
+- CPU/Memory ACI
+4. Automation
+- Uploads
+- Waiting for processing to complete
+- Downloads
