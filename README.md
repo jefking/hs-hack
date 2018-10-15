@@ -44,9 +44,9 @@ az group create -g <resourceGroupName> --location "West US 2"
 az group deployment create --name setup --resource-group <resourceGroupName> --template-file 1.deploy.json --parameters customerName=<customerName>
 ``
 
-### 3. Upload (untested)
+### 3. Upload
 ``
-azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.blob.core.windows.net/<customerName> --dest-key <storageAccountKey>
+azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.file.core.windows.net/<customerName> --dest-key <storageAccountKey>
 ``
 
 ### 4. Process Files (Container)
@@ -54,9 +54,9 @@ azcopy --source /mnt/<customerName> --destination https://<storageAccountName>.b
 az group deployment create --name process --resource-group <resourceGroupName> --template-file 2.deploy.json --parameters 2.parameters.json
 ``
 
-### 5. Download (untested)
+### 5. Download
 ``
-azcopy --source https://<storageAccountName>.blob.core.windows.net/<customerName> --destination /mnt/<customerName> \ --source-key <storageAccountKey>
+azcopy --source https://<storageAccountName>.file.core.windows.net/<customerName> --destination /mnt/<customerName> --source-key <storageAccountKey> --recursive
 ``
 
 ### 6. Delete Resources ($0)
