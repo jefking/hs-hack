@@ -63,3 +63,11 @@ azcopy --source https://<storageAccountName>.blob.core.windows.net/<customerName
 ``
 az group delete -n <resourceGroupName>
 ``
+
+# V.Next
+1. Code changes
+- Process terminates when done
+- Don't delete files
+- ini -> data store (later)
+- processing can be per file (later)
+2. Automation
