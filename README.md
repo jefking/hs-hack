@@ -77,3 +77,6 @@ az group delete -n <resourceGroupName>
 - Uploads
 - Waiting for processing to complete
 - Downloads
+5. DevOps
+- CI
+- CD
