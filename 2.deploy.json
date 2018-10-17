@@ -26,13 +26,46 @@
             "metadata": {
                 "description": "Container image to deploy. Should be of the form accountName/imagename[:tag] for images stored in Docker Hub or a fully qualified URI for a private registry like the Azure Container Registry."
             }
+        },
+        "imageRegistryLoginServer": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": ""
+            }
+        },
+        "imageUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "User name for private container registry"
+            }
+        },
+        "imagePassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Password for private container registry"
+            }
+        },
+        "cpuCores": {
+            "type": "string",
+            "defaultValue": "1.0",
+            "metadata": {
+                "description": "CPU allocation for container."
+            }
+        },
+        "memoryInGb": {
+            "type": "string",
+            "defaultValue": "1.5",
+            "metadata": {
+                "description": "Memory allocation for container."
+            }
         }
     },
     "variables": {
         "location": "[resourceGroup().location]",
         "fileShareName": "[parameters('customerName')]",
-        "cpuCores": "1.0",
-        "memoryInGb": "1.5",
+        "cpuCores": "[parameters('customerName')]",
+        "memoryInGb": "[parameters('customerName')]",
         "containerGroupName": "[concat('aci-', parameters('customerName'))]",
         "containerName": "[concat('process-', parameters('customerName'))]",
         "volumename": "[parameters('customerName')]"
@@ -48,12 +81,6 @@
                     {
                         "name": "[variables('containerName')]",
                         "properties": {
-                            "command": [
-                                "bin/bash",
-                                "shutdown",
-                                "now",
-                                "\"Killing Container\""
-                            ],
                             "image": "[parameters('image')]",
                             "resources": {
                                 "requests": {
@@ -65,13 +92,20 @@
                                 {
                                     "name": "[variables('volumename')]",
                                     "mountPath": "/mnt/input",
-                                    "readOnly": true
+                                    "readOnly": false
                                 }
                             ]
                         }
                     }
                 ],
                 "osType": "Linux",
+                "imageRegistryCredentials": [
+                    {
+                        "server": "[parameters('imageRegistryLoginServer')]",
+                        "username": "[parameters('imageUsername')]",
+                        "password": "[parameters('imagePassword')]"
+                    }
+                ],
                 "restartPolicy": "OnFailure",
                 "volumes": [
                     {
