@@ -29,9 +29,9 @@
         },
         "imageRegistryLoginServer": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "index.docker.io",
             "metadata": {
-                "description": ""
+                "description": "Remote URL for container registry."
             }
         },
         "imageUsername": {

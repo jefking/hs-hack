@@ -13,6 +13,18 @@
         },
         "image": {
             "value": "centos:latest"
+        },
+        "imageUsername": {
+            "value": ""
+        },
+        "imagePassword": {
+            "value": ""
+        },
+        "cpuCores": {
+            "value": "1.0"
+        },
+        "memoryInGb": {
+            "value": "1.5"
         }
     }
 }
